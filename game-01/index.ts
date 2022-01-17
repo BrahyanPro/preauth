@@ -13,28 +13,25 @@ const findSubSet = (
   }
 
   // ahora Empece con el verdadero codigo
-
   let perfectMatch: Array<number> = [];
   const size = arrayNumbers.length;
 
   for (let i = 0; i < size; i++) {
     const num1 = arrayNumbers[i];
-    for (let j = 0; j < size; j++) {
-      if (i === j || isNaN(num1)) continue;
-      const num2 = arrayNumbers[j];
-      if (num1 + num2 === intValue) {
-        perfectMatch = [num1, num2];
-        break;
-      }
+    let num2 = arrayNumbers.find((value) => num1 + value === intValue);
+    if (num1 === num2) continue; //Validacion para no seleccionar mismo numero
+    if (num2) {
+      perfectMatch = [num1, num2];
+      break;
     }
   }
+
   //una pequeña validacion más para evitar inconvenientes XD
   if (perfectMatch.length > 1) {
     return perfectMatch;
   }
 
   return `Dentro del array ${arrayNumbers} ningun numero sumado es igual a ${intValue}`;
-
   // Dijiste 15 lineas de codigo pero esto es adictivo, asi que escribi un poquito mas :V cuando me selecciones tenemos que celebrar con una partida, estuve revisando su juego fav
 };
 console.log(findSubSet([0, 5, 8, 14, 2, 7], 10));
