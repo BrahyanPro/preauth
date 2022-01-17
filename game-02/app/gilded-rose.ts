@@ -17,13 +17,13 @@ export class Item {
 
 //Oyee Leeroy como te vas en una aventura despues de hacer este desastree, tu teclado debio llorar despues de que lo hicieras escribir estó, el karma te espera XD
 export class GildedRose {
-  constructor(public items: Array<Item>) {}
-  updateQuality() {
+  items: Array<Item>;
+  constructor(items = [] as Array<Item>) {
+    this.items = items;
+  }
+  updateQuality(): Array<Item> {
     this.items.forEach((item) => {
       switch (item.name) {
-        case 'Sulfuras, Hand of Ragnaros':
-          item = updateSulfuras(item);
-          break;
         case 'Aged Brie': {
           item = updateAgedBrie(item);
           break;
@@ -32,6 +32,9 @@ export class GildedRose {
           item = updateBackstagePasses(item);
           break;
         }
+        case 'Sulfuras, Hand of Ragnaros':
+          item = updateSulfuras(item);
+          break;
         case 'Conjured': {
           item = updateConjured(item);
           break;
