@@ -25,6 +25,7 @@ nbproject
 # -----------------------------------
 node_modules
 vendor
+game-02/node_modules
 
 # CONFIG files
 # -----------------------------------

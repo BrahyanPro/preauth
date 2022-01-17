@@ -1,69 +1,47 @@
+import {
+  updateSulfuras,
+  updateAgedBrie,
+  updateBackstagePasses,
+  updateConjured,
+  updateItemDefault,
+} from './utils';
+
 export class Item {
-    name: string;
-    sellIn: number;
-    quality: number;
-
-    constructor(name, sellIn, quality) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
-    }
+  constructor(
+    public name: string,
+    public sellIn: number,
+    public quality: number
+  ) {}
+  //Fiuuu Esquivar duende*** Perdon gruñon, pero siempre que se puede hay que actualizar y optimizar codigo
 }
 
+//Oyee Leeroy como te vas en una aventura despues de hacer este desastree, tu teclado debio llorar despues de que lo hicieras escribir estó, el karma te espera XD
 export class GildedRose {
-    items: Array<Item>;
-
-    constructor(items = [] as Array<Item>) {
-        this.items = items;
-    }
-
-    updateQuality() {
-        for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-                if (this.items[i].quality > 0) {
-                    if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                        this.items[i].quality = this.items[i].quality - 1
-                    }
-                }
-            } else {
-                if (this.items[i].quality < 50) {
-                    this.items[i].quality = this.items[i].quality + 1
-                    if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].sellIn < 11) {
-                            if (this.items[i].quality < 50) {
-                                this.items[i].quality = this.items[i].quality + 1
-                            }
-                        }
-                        if (this.items[i].sellIn < 6) {
-                            if (this.items[i].quality < 50) {
-                                this.items[i].quality = this.items[i].quality + 1
-                            }
-                        }
-                    }
-                }
-            }
-            if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                this.items[i].sellIn = this.items[i].sellIn - 1;
-            }
-            if (this.items[i].sellIn < 0) {
-                if (this.items[i].name != 'Aged Brie') {
-                    if (this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].quality > 0) {
-                            if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                                this.items[i].quality = this.items[i].quality - 1
-                            }
-                        }
-                    } else {
-                        this.items[i].quality = this.items[i].quality - this.items[i].quality
-                    }
-                } else {
-                    if (this.items[i].quality < 50) {
-                        this.items[i].quality = this.items[i].quality + 1
-                    }
-                }
-            }
+  constructor(public items: Array<Item>) {}
+  updateQuality() {
+    this.items.forEach((item) => {
+      switch (item.name) {
+        case 'Sulfuras, Hand of Ragnaros':
+          item = updateSulfuras(item);
+          break;
+        case 'Aged Brie': {
+          item = updateAgedBrie(item);
+          break;
         }
-
-        return this.items;
-    }
+        case 'Backstage passes to a TAFKAL80ETC concert': {
+          item = updateBackstagePasses(item);
+          break;
+        }
+        case 'Conjured': {
+          item = updateConjured(item);
+          break;
+        }
+        default:
+          item = updateItemDefault(item);
+      }
+    });
+    return this.items;
+  }
 }
+
+// Ahora siii jeje esta mucho mejor XD, fue muy divertido hacer esto, sera porque amo programar? bueno esto es lo mejor del mundo

@@ -1,5 +1,7 @@
 # Let's start to make money
 
+El titulo me gusta mucho jajaj espero y hagamos muchooo dinero, me han dicho que la comida peruana es la hostia, se necesita dinero para comer XD
+
 ## How you'll be assessed
 
 - We love good code. Easy to read and with the best practices.
@@ -13,6 +15,7 @@
 - [Spaghetti code](https://github.com/preauth-io/challenge/tree/main/game-02)
 
 ## Any doubts?
+
 Just open a [new issue](https://github.com/preauth-io/challenge/issues/new) and we'll get back to you asap.
 
 ## Once you are finished...
