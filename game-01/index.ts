@@ -15,14 +15,12 @@ const findSubSet = (
   // ahora Empece con el verdadero codigo
   let perfectMatch: [number, number];
   const arrayFirstNum: number = arrayNumbers[0];
-  const num2: number = arrayNumbers.find(
-    (value, index) => value + arrayFirstNum === intValue
-  );
+  let secondNum: number = intValue - arrayFirstNum;
 
-  // Por esto necesito el for, si comparas este codigo con el anterior te daras cuenta que se necesita el for para obtener el index, justo ahora el codigo solo analiza que el primer numero del arreglo sumado con cualquier otro numero sea igual al pair num,  por ejemplo si la posicion 0 de la matriz sumada con cualquier otra posicion no da el resultado buscado, entonces lanzara el mensaje de error, necesito que compare todo el arreglo porque si hay 2 numeros en medio se sumen, he pensando por horas otras forma de como obtener el indice, asi que si existe otra forma, denme otra pista y yo ejecuto, y si no pos no logro ver la forma
+  //Sebastian me pusiste a flipar, ves que aprendo rapido, ves? a que te gustaria trabajar conmigo, a que si? a que si?, estamos en contacto
 
-  if (num2) {
-    perfectMatch = [10, num2];
+  if (secondNum) {
+    perfectMatch = [arrayFirstNum, secondNum];
   }
 
   //una pequeña validacion más para evitar inconvenientes XD
